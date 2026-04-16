@@ -137,7 +137,7 @@
             font-size: 0.8rem;
         }
 
-        /* --- NEW RESERVATION STYLES --- */
+        /* --- RESERVATION --- */
         .reservation-container {
             background: var(--dark-bg);
             display: flex;
@@ -190,17 +190,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(10deg);
-            cursor: pointer;
-        }
-
-        .input-group input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-        }
-
         .confirm-btn {
             width: 100%;
             padding: 15px;
@@ -228,12 +217,63 @@
             text-align: left;
             font-size: 0.8rem;
             margin-bottom: 5px;
-            margin-left: 2px;
             text-transform: uppercase;
         }
 
-        /* --- MAP --- */
-        #map { height: 400px; filter: grayscale(1) invert(0.9); border-top: 1px solid var(--gold); }
+        /* --- MAP SECTION --- */
+        #map { 
+            height: 500px; 
+            border-top: 1px solid var(--gold);
+            background-color: #ffffff;
+        }
+
+        /* --- FOOTER & CONTACT --- */
+        footer {
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            background-color: #050505;
+        }
+
+        .footer-info {
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 30px;
+        }
+
+        .contact-section h3 {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .contact-details {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--gold);
+        }
 
     </style>
 </head>
@@ -285,48 +325,24 @@
         <div class="booking-card">
             <h2>RESERVATION</h2>
             <form id="resForm">
-                <div class="input-group">
-                    <input type="text" id="name" placeholder="Full Name" required>
-                </div>
-                
-                <div class="input-group">
-                    <input type="number" id="guests" placeholder="Number of Guests" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Select Date</label>
-                    <input type="date" id="date" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Select Time</label>
-                    <input type="time" id="time" required>
-                </div>
-
-                <div class="input-group">
-                    <input type="tel" id="phone" placeholder="Mobile Number" required>
-                </div>
-
+                <div class="input-group"><input type="text" id="name" placeholder="Full Name" required></div>
+                <div class="input-group"><input type="number" id="guests" placeholder="Number of Guests" required></div>
+                <div class="input-group"><label>Select Date</label><input type="date" id="date" required></div>
+                <div class="input-group"><label>Select Time</label><input type="time" id="time" required></div>
+                <div class="input-group"><input type="tel" id="phone" placeholder="Mobile Number" required></div>
                 <button type="submit" class="confirm-btn">Confirm Luxury Table</button>
             </form>
         </div>
     </section>
 
-<div id="map">
-        <iframe 
-            width="100%" 
-            height="100%" 
-            frameborder="0" 
-            style="border:0" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.288251268383!2d79.05615907525944!3d21.138043280540854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c118e88f8477%3A0xb3b3ade36d9d4fab!2sRaasta%20Nagpur!5e0!3m2!1sen!2sin!4v1713271000000!5m2!1sen!2sin" 
-            allowfullscreen>
-        </iframe>
+    <div id="map">
+        <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.23456789!2d79.06654321!3d21.1456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c123456789ab%3A0xabcdef12345678!2sRaasta%20Nagpur!5e0!3m2!1sen!2sin!4v1620000000000" allowfullscreen></iframe>
     </div>
 
-    <footer style="padding: 30px; text-align: center; color: var(--gold); font-size: 0.7rem;">
-        RAASTA NAGPUR • OPEN TILL 1:30 AM
-    </footer>
-    <div class="contact-section">
+    <footer>
+        <div class="footer-info">RAASTA NAGPUR • OPEN TILL 1:30 AM</div>
+        
+        <div class="contact-section">
             <h3>CONTACT US</h3>
             <div class="contact-details">
                 <p>Phone: <a href="tel:07742284228">077422 84228</a></p>
@@ -336,7 +352,6 @@
     </footer>
 
     <script>
-        // Hero Slider
         const heroImgs = document.querySelectorAll('.hero-slides img');
         let index = 0;
         setInterval(() => {
@@ -345,29 +360,11 @@
             heroImgs[index].classList.add('active');
         }, 3000);
 
-        // Reservation Form Handler
         document.getElementById('resForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const btn = document.querySelector('.confirm-btn');
             btn.innerHTML = "SENDING...";
-            
-            const details = {
-                name: document.getElementById('name').value,
-                guests: document.getElementById('guests').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                phone: document.getElementById('phone').value
-            };
-
-            const message = `*New Reservation Request*%0A` +
-                            `--------------------------%0A` +
-                            `*Name:* ${details.name}%0A` +
-                            `*Guests:* ${details.guests}%0A` +
-                            `*Date:* ${details.date}%0A` +
-                            `*Time:* ${details.time}%0A` +
-                            `*Contact:* ${details.phone}`;
-
+            const message = `*New Reservation Request*%0A*Name:* ${document.getElementById('name').value}%0A*Guests:* ${document.getElementById('guests').value}%0A*Date:* ${document.getElementById('date').value}%0A*Time:* ${document.getElementById('time').value}%0A*Contact:* ${document.getElementById('phone').value}`;
             setTimeout(() => {
                 window.open(`https://wa.me/918767695492?text=${message}`, '_blank');
                 btn.innerHTML = "CONFIRM LUXURY TABLE";
