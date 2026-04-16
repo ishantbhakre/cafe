@@ -211,17 +211,21 @@
             transform: scale(1.02);
         }
 
-        /* --- MAP SECTION --- */
-        #map { 
-            height: 500px; 
+        /* --- FIXED MAP SIZE & STYLE --- */
+        .map-container {
             width: 100%;
+            height: 500px; /* Fixed height for consistency */
             border-top: 1px solid var(--gold);
-            background-color: #000; /* Matches luxury theme */
+            border-bottom: 1px solid var(--gold);
+            overflow: hidden;
+            background: #000;
         }
-        #map iframe {
+
+        .map-container iframe {
             width: 100%;
             height: 100%;
             border: 0;
+            filter: grayscale(20%) contrast(1.1); /* Slight luxury filter to match theme */
         }
 
         /* --- FOOTER & CONTACT --- */
@@ -332,9 +336,9 @@
         </div>
     </section>
 
-<div class="map-container">
+    <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps?q=21.138293453802437,79.05828332197551&hl=es;z=14&output=embed" 
+            src="https://www.google.com/maps?q=21.138293,79.058283&hl=es;z=14&output=embed" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
