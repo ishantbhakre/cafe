@@ -11,6 +11,8 @@
             --gold: #d4af37;
             --dark: #0a0a0a;
             --white: #ffffff;
+            --dark-bg: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,7 +43,7 @@
 
         .navbar a:hover { color: var(--gold); }
 
-        /* --- HERO SLIDESHOW (Venue Photos) --- */
+        /* --- HERO SLIDESHOW --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -65,7 +67,6 @@
 
         .hero-slides img.active { opacity: 1; }
 
-        /* --- FADE IN ANIMATION --- */
         .brand-overlay {
             z-index: 10;
             text-align: center;
@@ -85,8 +86,7 @@
             letter-spacing: 20px;
         }
 
-        /* --- SECTION STYLING --- */
-        section { padding: 80px 10%; }
+        /* --- SECTION TITLES --- */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -97,11 +97,15 @@
             letter-spacing: 5px;
         }
 
-        /* --- MENU GALLERY (Food Photos) --- */
+        /* --- PHILOSOPHY SECTION --- */
+        section { padding: 80px 10%; }
+
+        /* --- MENU GALLERY --- */
         .menu-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            padding: 0 10%;
         }
 
         .menu-card {
@@ -133,33 +137,98 @@
             font-size: 0.8rem;
         }
 
-        /* --- BOOKING --- */
-        .booking-form {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #111;
-            padding: 40px;
-            border-top: 3px solid var(--gold);
+        /* --- NEW RESERVATION STYLES --- */
+        .reservation-container {
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            font-family: 'Playfair Display', serif;
         }
 
-        input {
+        .booking-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .booking-card h2 {
+            color: var(--gold);
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
             width: 100%;
             padding: 15px;
-            margin-bottom: 20px;
-            background: #1a1a1a;
+            background: rgba(0, 0, 0, 0.3);
             border: 1px solid #333;
+            border-radius: 5px;
             color: white;
             outline: none;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .btn {
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(10deg);
+            cursor: pointer;
+        }
+
+        .input-group input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .confirm-btn {
             width: 100%;
             padding: 15px;
-            background: var(--gold);
+            background: linear-gradient(45deg, #b8860b, #ffd700);
             border: none;
+            border-radius: 5px;
             color: black;
             font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .confirm-btn:hover {
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+
+        .input-group label {
+            display: block;
+            color: var(--gold);
+            text-align: left;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            margin-left: 2px;
             text-transform: uppercase;
         }
 
@@ -187,11 +256,11 @@
         </div>
         <div class="brand-overlay">
             <h1>RAASTA</h1>
-            <p style="letter-spacing: 10px; color: #fff; font-size: 0.9rem;">NAGPUR'S PREMIER ROOFTOP</p>
+            <p style="letter-spacing: 10px; color: #fff; font-size: 0.8rem;">NAGPUR</p>
         </div>
     </div>
 
-<section id="philosophy">
+    <section id="philosophy">
         <h2 class="section-title">The Soul of Raasta</h2>
         <p style="text-align: center; line-height: 2; color: #bbb; max-width: 800px; margin: 0 auto;">
             Experience the magic of the 20th floor, where the sky meets the soul. Raasta Nagpur is more than just a destination — it’s a vibrant sanctuary of rhythm, luxury, and culinary excellence. From its electrifying dance floor to a globally inspired fast-food menu, every element is designed to elevate your senses.
@@ -199,51 +268,52 @@
             Unwind at our stunning rooftop bar, where breathtaking city views blend seamlessly with curated music, signature flavors, and an unforgettable ambiance. Whether you’re here to dine, dance, or simply escape, Raasta offers an unmatched vibe where every detail is crafted to make your experience extraordinary.
         </p>
     </section>
-    
+
     <section id="menu">
-        <h2 class="section-title">The Menu</h2>
+        <h2 class="section-title">Visual Menu</h2>
         <div class="menu-gallery">
-            <div class="menu-card">
-                <img src="fy1.jpg">
-                <div class="menu-label">RAASTA SIGNATURE MAINS</div>
-            </div>
-            <div class="menu-card">
-                <img src="fy2.jpeg">
-                <div class="menu-label">CHEF'S SPECIAL SELECTION</div>
-            </div>
-            <div class="menu-card">
-                <img src="fy3.jpeg">
-                <div class="menu-label">ARTISAN SMALL PLATES</div>
-            </div>
-            <div class="menu-card">
-                <img src="fy4.jpg">
-                <div class="menu-label">AUTHENTIC FLAVORS</div>
-            </div>
-            <div class="menu-card">
-                <img src="fy5.jpg">
-                <div class="menu-label">PREMIUM DELICACIES</div>
-            </div>
-            <div class="menu-card">
-                <img src="fy6.jpg">
-                <div class="menu-label">HOUSE FAVORITES</div>
-            </div>
+            <div class="menu-card"><img src="fy1.jpg"><div class="menu-label">RAASTA SIGNATURE MAINS</div></div>
+            <div class="menu-card"><img src="fy2.jpeg"><div class="menu-label">CHEF'S SPECIAL SELECTION</div></div>
+            <div class="menu-card"><img src="fy3.jpeg"><div class="menu-label">ARTISAN SMALL PLATES</div></div>
+            <div class="menu-card"><img src="fy4.jpg"><div class="menu-label">AUTHENTIC FLAVORS</div></div>
+            <div class="menu-card"><img src="fy5.jpg"><div class="menu-label">PREMIUM DELICACIES</div></div>
+            <div class="menu-card"><img src="fy6.jpg"><div class="menu-label">HOUSE FAVORITES</div></div>
         </div>
     </section>
 
-    <section id="booking">
-        <h2 class="section-title">Reservation</h2>
-        <div class="booking-form">
-            <form id="res">
-                <input type="text" placeholder="Your Name" required>
-                <input type="number" placeholder="Total People" required>
-                <input type="tel" placeholder="Mobile Number" required>
-                <button type="submit" class="btn">Confirm Your Table</button>
+    <section id="booking" class="reservation-container">
+        <div class="booking-card">
+            <h2>RESERVATION</h2>
+            <form id="resForm">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="number" id="guests" placeholder="Number of Guests" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Select Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Select Time</label>
+                    <input type="time" id="time" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="phone" placeholder="Mobile Number" required>
+                </div>
+
+                <button type="submit" class="confirm-btn">Confirm Luxury Table</button>
             </form>
         </div>
     </section>
 
     <div id="map">
-        <iframe width="100%" height="100%" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.135272658826!2d79.0592!3d21.1475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0f3c5555555%3A0x6a0a0a0a0a0a0a0a!2sRaasta%20Nagpur!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"></iframe>
+        <iframe width="100%" height="100%" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.1444455806655!2d79.0558667760565!3d21.14665488371239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c13000000001%3A0x64764b85590918c5!2sRaasta%20Nagpur!5e0!3m2!1sen!2sin!4v1712061234567!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <footer style="padding: 30px; text-align: center; color: var(--gold); font-size: 0.7rem;">
@@ -251,7 +321,7 @@
     </footer>
 
     <script>
-        // Hero Slideshow Switcher (Every 3 seconds)
+        // Hero Slider
         const heroImgs = document.querySelectorAll('.hero-slides img');
         let index = 0;
         setInterval(() => {
@@ -260,11 +330,33 @@
             heroImgs[index].classList.add('active');
         }, 3000);
 
-        // Booking Confirmation
-        document.getElementById('res').addEventListener('submit', function(e) {
+        // Reservation Form Handler
+        document.getElementById('resForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert("Booking submitted! We will send a confirmation message to your mobile shortly.");
-            this.reset();
+            
+            const btn = document.querySelector('.confirm-btn');
+            btn.innerHTML = "SENDING...";
+            
+            const details = {
+                name: document.getElementById('name').value,
+                guests: document.getElementById('guests').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                phone: document.getElementById('phone').value
+            };
+
+            const message = `*New Reservation Request*%0A` +
+                            `--------------------------%0A` +
+                            `*Name:* ${details.name}%0A` +
+                            `*Guests:* ${details.guests}%0A` +
+                            `*Date:* ${details.date}%0A` +
+                            `*Time:* ${details.time}%0A` +
+                            `*Contact:* ${details.phone}`;
+
+            setTimeout(() => {
+                window.open(`https://wa.me/918767695492?text=${message}`, '_blank');
+                btn.innerHTML = "CONFIRM LUXURY TABLE";
+            }, 800);
         });
     </script>
 </body>
